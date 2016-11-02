@@ -1,0 +1,8 @@
+[
+  {
+    "url": "http://www.my-site.com/path/to/image.jpg",
+    "dest": "relative/path/to/image_nb_*({date}).jpg",
+    "cron": "0 0/2 7-18 * * *",
+    "description": "my image"
+  }
+]
