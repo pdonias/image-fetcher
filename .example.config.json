@@ -4,5 +4,11 @@
     "dest": "relative/path/to/image_nb_*({date}).jpg",
     "cron": "0 0/2 7-18 * * *",
     "description": "my image"
+  },
+  {
+    "url": "http://www.my-site.com/path/to/other/image.jpg",
+    "dest": "relative/path/to/other/image_nb_*.jpg",
+    "delay": 3,
+    "description": "my other image"
   }
 ]
