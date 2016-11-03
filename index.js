@@ -1,4 +1,3 @@
-const config = require('./config.json')
 const CronJob = require('cron').CronJob
 const dl = require('download')
 const fs = require('fs')
@@ -9,8 +8,12 @@ const {
   replace
 } = require('lodash')
 
-if (!config) {
-  console.log('Usage: copy file .example.config.json, rename it as config.json and fill it with your configuration before running this program.')
+let config
+try {
+  config = require('./config.json')
+} catch (e) {
+  console.log('Usage: you need to create a valid config.json file before running this program')
+  process.exit(0)
 }
 
 const crons = map(config, image => {
