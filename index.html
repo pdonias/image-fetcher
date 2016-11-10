@@ -62,9 +62,13 @@
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
         <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The complete URL from which to download the image<span class="pl-pds">"</span></span>
       },
-      <span class="pl-s"><span class="pl-pds">"</span>dest<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
-        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The relative local path where to save the image, including the file name pattern<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The relative local path where to save the image<span class="pl-pds">"</span></span>
+      },
+      <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The name pattern of the destination file (e.g.: my-image-number-#.jpg)<span class="pl-pds">"</span></span>
       },
       <span class="pl-s"><span class="pl-pds">"</span>cron<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
@@ -93,7 +97,7 @@ Pattern substitutions:</p>
 
 <ul>
 <li>
-<code>*</code> → index of the download iteration</li>
+<code>#</code> → index of the download iteration</li>
 <li>
 <code>{date}</code> → a string representing the current time</li>
 </ul>
