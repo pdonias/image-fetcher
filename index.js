@@ -25,7 +25,7 @@ const crons = map(config, image => {
       image.url
     ).then(data => {
       fs.writeFileSync(
-        `${__dirname}/` + image.dest.replace(/\*|{date}/g, match => match === '*' ? cpt++ : Date.now()),
+        `${__dirname}/` + image.dest.replace(/#|{date}/g, match => match === '#' ? cpt++ : Date.now()),
         data
       )
     }).then(

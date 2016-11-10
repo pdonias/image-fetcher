@@ -52,7 +52,7 @@ Image fetcher
 
 The image file name needs to be a pattern in order to not overwrite the same file after each download.
 Pattern substitutions:
-  - `*` → index of the download iteration
+  - `#` → index of the download iteration
   - `{date}` → a string representing the current time
 
 ## `delay` vs `cron`
