@@ -24,9 +24,13 @@ Image fetcher
         "type": "string",
         "description": "The complete URL from which to download the image"
       },
-      "dest": {
+      "path": {
         "type": "string",
-        "description": "The relative local path where to save the image, including the file name pattern"
+        "description": "The relative local path where to save the image"
+      },
+      "name": {
+        "type": "string",
+        "description": "The name pattern of the destination file (e.g.: my-image-number-#.jpg)"
       },
       "cron": {
         "type": "string",
