@@ -3,7 +3,6 @@ const dl = require('download')
 const fs = require('fs')
 const mkdirp = require('mkdirp')
 const {
-  findLastIndex,
   map,
   replace
 } = require('lodash')
@@ -16,25 +15,38 @@ try {
   process.exit(0)
 }
 
-const crons = map(config, image => {
+const crons = map(config, ({ name, description, url, path, delay, cron }) => {
   let cpt = 0
-  const path = `${__dirname}/` + image.dest.substr(0, findLastIndex(image.dest, c => c === '/'))
-  mkdirp(path)
+
+  const absolutePath = `${__dirname}/${path}`
+  mkdirp(absolutePath)
+
   const cb = () => {
     dl(
-      image.url
+      url
     ).then(data => {
+      const index = cpt++
+      const date = Date.now()
+
       fs.writeFileSync(
-        `${__dirname}/` + image.dest.replace(/#|{date}/g, match => match === '#' ? cpt++ : Date.now()),
+        `${absolutePath}/` + name.replace(/#|{date}/g, match => {
+          switch(match) {
+            case '#':
+              return index
+            case '{date}':
+              return date
+          }
+        }),
         data
       )
     }).then(
-      () => console.log(`[${(new Date()).toString()}] Saved ${image.description || image.dest}`),
-      error => console.log(`[${(new Date()).toString()}] ERROR while saving ${image.description || image.dest}: ${error}`)
+      () => console.log(`[${(new Date()).toString()}] Saved ${description || name}`),
+      error => console.error(`[${(new Date()).toString()}] ERROR while saving ${description || name}: ${error}`)
     )
   }
+
   return new CronJob({
-    cronTime: image.cron || `0 0/${image.delay} * * *`,
+    cronTime: cron || `0 0/${delay} * * *`,
     onTick: cb,
     start: true,
     timeZone: 'Europe/Paris'
