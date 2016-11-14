@@ -1,4 +1,4 @@
-Image fetcher
+File fetcher
 =============
 
 ## Installation
@@ -18,19 +18,19 @@ Image fetcher
   "type": "array",
   "items": {
     "type": "object",
-    "description": "An object describing how, when and where the image will be downloaded",
+    "description": "An object describing how, when and where the file will be downloaded",
     "properties": {
       "url": {
         "type": "string",
-        "description": "The complete URL from which to download the image"
+        "description": "The complete URL from which to download the file"
       },
       "path": {
         "type": "string",
-        "description": "The relative local path where to save the image"
+        "description": "The relative local path where to save the file"
       },
       "name": {
         "type": "string",
-        "description": "The name pattern of the destination file (e.g.: my-image-number-#.jpg)"
+        "description": "The name pattern of the destination file (e.g.: my-file-number-#.jpg)"
       },
       "cron": {
         "type": "string",
@@ -44,7 +44,7 @@ Image fetcher
       },
       "description": {
         "type": "string",
-        "description": "The string used to represent the image in log messages",
+        "description": "The string used to represent the file in log messages",
         "optional": "true"
       }
     }
@@ -52,15 +52,15 @@ Image fetcher
 }
 ```
 
-## Image name pattern
+## File name pattern
 
-The image file name needs to be a pattern in order to not overwrite the same file after each download.
+The file name needs to be a pattern in order to not overwrite the same file after each download.
 Pattern substitutions:
   - `#` → index of the download iteration
   - `{date}` → a string representing the current time
 
 ## `delay` vs `cron`
 
-To determine the download frequence of each image, you can use either the `delay` property or the `cron` property.
+To determine the download frequence of each file, you can use either the `delay` property or the `cron` property.
 - `delay` is simply a number of minutes between each download
 - `cron` is a [cron expression](https://en.wikipedia.org/wiki/Cron)

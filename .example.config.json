@@ -1,16 +1,16 @@
 [
   {
-    "url": "http://www.my-site.com/path/to/image.jpg",
-    "name": "image_nb_#({date}).jpg",
+    "url": "http://www.my-site.com/path/to/file.jpg",
+    "name": "file_nb_#({date}).jpg",
     "path": "relative/path/to",
     "cron": "0 0/2 7-18 * * *",
-    "description": "my image"
+    "description": "my file"
   },
   {
-    "url": "http://www.my-site.com/path/to/other/image.jpg",
-    "name": "image_nb_#.jpg",
-    "path": "relative/path/to/other",
-    "delay": 3,
-    "description": "my other image"
+    "url": "http://www.my-site.com/path/to/other/file.jpg",
+    "name": "file_nb_#.jpg",
+    "path": "relative/path/to/other/file",
+    "delay": "3",
+    "description": "my other file"
   }
 ]
