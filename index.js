@@ -4,25 +4,35 @@
 
 const CronJob = require('cron').CronJob
 const dl = require('download')
+const expand = require('expand-tilde')
 const fs = require('fs')
 const mkdirp = require('mkdirp')
+const toAbs = require('to-absolute-glob')
 const {
   map,
   replace
 } = require('lodash')
 
+const ARGS = process.argv
+const FOLDER = process.cwd()
+
+
+function toAbsolutePath (relativePath = '') {
+  return toAbs(expand(relativePath), { cwd: FOLDER })
+}
+
 let config
 try {
-  config = require('./config.json')
+  config = require(toAbsolutePath(ARGS[2]))
 } catch (e) {
-  console.log('Usage: you need to create a valid config.json file before running this program')
+  console.log('Usage: file-fetcher <config file> [<destination file>]')
   process.exit(0)
 }
 
 const crons = map(config, ({ name, description, url, path, delay, cron }) => {
   let cpt = 0
 
-  const absolutePath = `${__dirname}/${path}`
+  const absolutePath = `${toAbsolutePath(ARGS[3])}/${path}`
   mkdirp(absolutePath)
 
   const cb = () => {
