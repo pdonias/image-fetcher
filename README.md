@@ -1,17 +1,22 @@
 File fetcher
-=============
+============
 
 ## Installation
 
-`npm install`
+```sh
+$ npm install -g file-fetcher
+```
 
 ## Usage
 
-- Create a config.json file at the root of the project
-- Fill it with your configuration
-- Run index.js: `node index.js`
+- Create a config file with your configuration (See documentation and example below)
+- Run file-fetcher:
 
-## config.json - JSON schema
+```sh
+$ file-fetcher <config file> [<destination folder>]
+```
+
+## Config file JSON schema
 
 ```json
 {
@@ -64,3 +69,24 @@ Pattern substitutions:
 To determine the download frequence of each file, you can use either the `delay` property or the `cron` property.
 - `delay` is simply a number of minutes between each download
 - `cron` is a [cron expression](https://en.wikipedia.org/wiki/Cron)
+
+## Config example
+
+```json
+[
+  {
+    "url": "http://www.my-site.com/path/to/file.jpg",
+    "name": "file_nb_#({date}).jpg",
+    "path": "relative/path/to",
+    "cron": "0 0/2 7-18 * * *",
+    "description": "my file"
+  },
+  {
+    "url": "http://www.my-site.com/path/to/other/file.jpg",
+    "name": "file_nb_#.jpg",
+    "path": "relative/path/to/other/file",
+    "delay": "3",
+    "description": "my other file"
+  }
+]
+```
