@@ -2,6 +2,9 @@
   "name": "image-fetcher",
   "description": "Recurrent file fetching tool",
   "version": "0.1.1",
+  "bin": {
+    "image-fetcher": "index.js"
+  },
   "dependencies": {
     "cron": "^1.1.1",
     "download": "^5.0.2",
