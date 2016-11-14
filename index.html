@@ -16,14 +16,14 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/pdonias/image-fetcher">View on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/pdonias/file-fetcher">View on GitHub</a>
 
           <h1 id="project_title">Image fetcher</h1>
           <h2 id="project_tagline"></h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/pdonias/image-fetcher/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/pdonias/image-fetcher/tarball/master">Download this project as a tar.gz file</a>
+              <a class="zip_download_link" href="https://github.com/pdonias/file-fetcher/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/pdonias/file-fetcher/tarball/master">Download this project as a tar.gz file</a>
             </section>
         </header>
     </div>
@@ -32,43 +32,43 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a id="image-fetcher" class="anchor" href="#image-fetcher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Image fetcher</h1>
+<a id="file-fetcher" class="anchor" href="#file-fetcher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>File fetcher</h1>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p><code>npm install</code></p>
+<div class="highlight highlight-source-shell"><pre>$ npm install -g file-fetcher</pre></div>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <ul>
-<li>Create a config.json file at the root of the project</li>
-<li>Fill it with your configuration</li>
-<li>Run index.js: <code>node index.js</code>
-</li>
+<li>Create a config file with your configuration (See documentation and example below)</li>
+<li>Run file-fetcher:</li>
 </ul>
 
+<div class="highlight highlight-source-shell"><pre>$ file-fetcher <span class="pl-k">&lt;</span>config file<span class="pl-k">&gt;</span> [<span class="pl-k">&lt;</span>destination folder<span class="pl-k">&gt;</span>]</pre></div>
+
 <h2>
-<a id="configjson---json-schema" class="anchor" href="#configjson---json-schema" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>config.json - JSON schema</h2>
+<a id="config-file-json-schema" class="anchor" href="#config-file-json-schema" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Config file JSON schema</h2>
 
 <div class="highlight highlight-source-json"><pre>{
   <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>,
   <span class="pl-s"><span class="pl-pds">"</span>items<span class="pl-pds">"</span></span>: {
     <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>object<span class="pl-pds">"</span></span>,
-    <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>An object describing how, when and where the image will be downloaded<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>An object describing how, when and where the file will be downloaded<span class="pl-pds">"</span></span>,
     <span class="pl-s"><span class="pl-pds">"</span>properties<span class="pl-pds">"</span></span>: {
       <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
-        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The complete URL from which to download the image<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The complete URL from which to download the file<span class="pl-pds">"</span></span>
       },
       <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
-        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The relative local path where to save the image<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The relative local path where to save the file<span class="pl-pds">"</span></span>
       },
       <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
-        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The name pattern of the destination file (e.g.: my-image-number-#.jpg)<span class="pl-pds">"</span></span>
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The name pattern of the destination file (e.g.: my-file-number-#.jpg)<span class="pl-pds">"</span></span>
       },
       <span class="pl-s"><span class="pl-pds">"</span>cron<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
@@ -82,7 +82,7 @@
       },
       <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
-        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The string used to represent the image in log messages<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The string used to represent the file in log messages<span class="pl-pds">"</span></span>,
         <span class="pl-s"><span class="pl-pds">"</span>optional<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>
       }
     }
@@ -90,9 +90,9 @@
 }</pre></div>
 
 <h2>
-<a id="image-name-pattern" class="anchor" href="#image-name-pattern" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Image name pattern</h2>
+<a id="file-name-pattern" class="anchor" href="#file-name-pattern" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>File name pattern</h2>
 
-<p>The image file name needs to be a pattern in order to not overwrite the same file after each download.
+<p>The file name needs to be a pattern in order to not overwrite the same file after each download.
 Pattern substitutions:</p>
 
 <ul>
@@ -106,7 +106,7 @@ Pattern substitutions:</p>
 <a id="delay-vs-cron" class="anchor" href="#delay-vs-cron" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>delay</code> vs <code>cron</code>
 </h2>
 
-<p>To determine the download frequence of each image, you can use either the <code>delay</code> property or the <code>cron</code> property.</p>
+<p>To determine the download frequence of each file, you can use either the <code>delay</code> property or the <code>cron</code> property.</p>
 
 <ul>
 <li>
@@ -115,6 +115,26 @@ Pattern substitutions:</p>
 <code>cron</code> is a <a href="https://en.wikipedia.org/wiki/Cron">cron expression</a>
 </li>
 </ul>
+
+<h2>
+<a id="config-example" class="anchor" href="#config-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Config example</h2>
+
+<div class="highlight highlight-source-json"><pre>[
+  {
+    <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://www.my-site.com/path/to/file.jpg<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>file_nb_#({date}).jpg<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>relative/path/to<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>cron<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>0 0/2 7-18 * * *<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>my file<span class="pl-pds">"</span></span>
+  },
+  {
+    <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://www.my-site.com/path/to/other/file.jpg<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>file_nb_#.jpg<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>relative/path/to/other/file<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>delay<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>my other file<span class="pl-pds">"</span></span>
+  }
+]</pre></div>
       </section>
     </div>
 
