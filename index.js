@@ -3,6 +3,7 @@
 'use strict'
 
 const CronJob = require('cron').CronJob
+const digits = require('digits')
 const dl = require('download')
 const expand = require('expand-tilde')
 const fs = require('fs')
@@ -27,7 +28,7 @@ try {
   process.exit(0)
 }
 
-forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 0 }) => {
+forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 0, digits: nbDigits }) => {
   const absolutePath = `${toAbsolutePath(ARGS[3])}/${path}`
   mkdirp(absolutePath)
 
@@ -35,7 +36,7 @@ forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 0 }) 
     dl(
       url
     ).then(data => {
-      const index = firstIndex++
+      const index = digits(String(firstIndex++), nbDigits)
       const date = Date.now()
 
       fs.writeFileSync(
