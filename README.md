@@ -42,6 +42,11 @@ $ file-fetcher <config file> [<destination folder>]
         "description": "First number used as index (#) in name pattern",
         "optional": "true"
       },
+      "digits": {
+        "type": "number",
+        "description": "Minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left.",
+        "optional": "true"
+      },
       "cron": {
         "type": "string",
         "description": "The cron pattern that determines the download frequence (delay can be used instead)",
@@ -90,6 +95,7 @@ To determine the download frequence of each file, you can use either the `delay`
     "url": "http://www.my-site.com/path/to/other/file.jpg",
     "name": "file_nb_#.jpg",
     "firstIndex": "42",
+    "digits": "4",
     "path": "relative/path/to/other/file",
     "delay": "3",
     "description": "my other file"
