@@ -27,9 +27,7 @@ try {
   process.exit(0)
 }
 
-forEach(config, ({ name, description, url, path, delay, cron }) => {
-  let cpt = 0
-
+forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 0 }) => {
   const absolutePath = `${toAbsolutePath(ARGS[3])}/${path}`
   mkdirp(absolutePath)
 
@@ -37,7 +35,7 @@ forEach(config, ({ name, description, url, path, delay, cron }) => {
     dl(
       url
     ).then(data => {
-      const index = cpt++
+      const index = firstIndex++
       const date = Date.now()
 
       fs.writeFileSync(
