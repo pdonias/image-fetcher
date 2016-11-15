@@ -9,13 +9,11 @@ const fs = require('fs')
 const mkdirp = require('mkdirp')
 const toAbs = require('to-absolute-glob')
 const {
-  map,
-  replace
+  forEach
 } = require('lodash')
 
 const ARGS = process.argv
 const FOLDER = process.cwd()
-
 
 function toAbsolutePath (relativePath = '') {
   return toAbs(expand(relativePath), { cwd: FOLDER })
@@ -29,7 +27,7 @@ try {
   process.exit(0)
 }
 
-const crons = map(config, ({ name, description, url, path, delay, cron }) => {
+forEach(config, ({ name, description, url, path, delay, cron }) => {
   let cpt = 0
 
   const absolutePath = `${toAbsolutePath(ARGS[3])}/${path}`
@@ -44,7 +42,7 @@ const crons = map(config, ({ name, description, url, path, delay, cron }) => {
 
       fs.writeFileSync(
         `${absolutePath}/` + name.replace(/#|{date}/g, match => {
-          switch(match) {
+          switch (match) {
             case '#':
               return index
             case '{date}':
