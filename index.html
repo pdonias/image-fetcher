@@ -34,6 +34,9 @@
         <h1>
 <a id="file-fetcher" class="anchor" href="#file-fetcher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>File fetcher</h1>
 
+<p><a href="https://badge.fury.io/js/file-fetcher"><img src="https://badge.fury.io/js/file-fetcher.svg" alt="npm version"></a>
+<a href="https://badge.fury.io/gh/pdonias%2Ffile-fetcher"><img src="https://badge.fury.io/gh/pdonias%2Ffile-fetcher.svg" alt="GitHub version"></a></p>
+
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
@@ -70,13 +73,23 @@
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
         <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The name pattern of the destination file (e.g.: my-file-number-#.jpg)<span class="pl-pds">"</span></span>
       },
+      <span class="pl-s"><span class="pl-pds">"</span>firstIndex<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>First number used as index (#) in name pattern<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>optional<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>
+      },
+      <span class="pl-s"><span class="pl-pds">"</span>digits<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left.<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>optional<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>
+      },
       <span class="pl-s"><span class="pl-pds">"</span>cron<span class="pl-pds">"</span></span>: {
         <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
         <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The cron pattern that determines the download frequence (delay can be used instead)<span class="pl-pds">"</span></span>,
         <span class="pl-s"><span class="pl-pds">"</span>optional<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>
       },
       <span class="pl-s"><span class="pl-pds">"</span>delay<span class="pl-pds">"</span></span>: {
-        <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: [ <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span> ],
+        <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>,
         <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The delay in minutes that determines the download frequence (cron can be used instead)<span class="pl-pds">"</span></span>,
         <span class="pl-s"><span class="pl-pds">"</span>optional<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span>
       },
@@ -130,6 +143,8 @@ Pattern substitutions:</p>
   {
     <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://www.my-site.com/path/to/other/file.jpg<span class="pl-pds">"</span></span>,
     <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>file_nb_#.jpg<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>firstIndex<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>42<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>digits<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>4<span class="pl-pds">"</span></span>,
     <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>relative/path/to/other/file<span class="pl-pds">"</span></span>,
     <span class="pl-s"><span class="pl-pds">"</span>delay<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>,
     <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>my other file<span class="pl-pds">"</span></span>
