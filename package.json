@@ -1,7 +1,23 @@
 {
   "name": "file-fetcher",
   "description": "Recurrent file fetching tool",
+  "homepage": "https://pdonias.github.io/file-fetcher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pdonias/file-fetcher"
+  },
+  "author": "Pierre Donias <pierre.donias@gmail.com>",
   "version": "0.3.0",
+  "license": "AGPL-3.0",
+  "preferGlobal": true,
+  "keywords": [
+    "file",
+    "fetch",
+    "fetching",
+    "recurrent",
+    "cron",
+    "download"
+  ],
   "bin": {
     "file-fetcher": "index.js"
   },
