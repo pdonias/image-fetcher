@@ -1,5 +1,7 @@
 File fetcher
 ============
+[![npm version](https://badge.fury.io/js/file-fetcher.svg)](https://badge.fury.io/js/file-fetcher)
+[![GitHub version](https://badge.fury.io/gh/pdonias%2Ffile-fetcher.svg)](https://badge.fury.io/gh/pdonias%2Ffile-fetcher)
 
 ## Installation
 
