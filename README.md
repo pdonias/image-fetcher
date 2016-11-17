@@ -1,7 +1,10 @@
 File fetcher
 ============
+
 [![npm version](https://badge.fury.io/js/file-fetcher.svg)](https://badge.fury.io/js/file-fetcher)
 [![GitHub version](https://badge.fury.io/gh/pdonias%2Ffile-fetcher.svg)](https://badge.fury.io/gh/pdonias%2Ffile-fetcher)
+
+file-fetcher is a simple tool that lets you download files recurrently.
 
 ## Installation
 
@@ -18,63 +21,32 @@ $ npm install -g file-fetcher
 $ file-fetcher <config file> [<destination folder>]
 ```
 
-## Config file JSON schema
+## Config file properties
 
-```json
-{
-  "type": "array",
-  "items": {
-    "type": "object",
-    "description": "An object describing how, when and where the file will be downloaded",
-    "properties": {
-      "url": {
-        "type": "string",
-        "description": "The complete URL from which to download the file"
-      },
-      "path": {
-        "type": "string",
-        "description": "The relative local path where to save the file"
-      },
-      "name": {
-        "type": "string",
-        "description": "The name pattern of the destination file (e.g.: my-file-number-#.jpg)"
-      },
-      "firstIndex": {
-        "type": "number",
-        "description": "First number used as index (#) in name pattern",
-        "optional": "true"
-      },
-      "digits": {
-        "type": "number",
-        "description": "Minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left.",
-        "optional": "true"
-      },
-      "cron": {
-        "type": "string",
-        "description": "The cron pattern that determines the download frequence (delay can be used instead)",
-        "optional": "true"
-      },
-      "delay": {
-        "type": "number",
-        "description": "The delay in minutes that determines the download frequence (cron can be used instead)",
-        "optional": "true"
-      },
-      "description": {
-        "type": "string",
-        "description": "The string used to represent the file in log messages",
-        "optional": "true"
-      }
-    }
-  }
-}
-```
+The config file must contain an array of objects.
+Each object corresponds to a file and can/must have the following properties:
+
+| Property | Type | Required? | Description |
+|:---|:---|:---:|:---|
+| url | String | ✓ | The complete URL from which to download the file |
+| path | String | ✓ | The relative local path where to save the file |
+| name | String | ✓ | The name pattern of the destination file (e.g.: my-file-number-#.jpg) |
+| description | String |  | The string used to represent the file in log messages |
+| firstIndex | Number |  | The first number used as index (#) in name pattern |
+| digits | Number |  | The minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left. |
+| cron | String | ✓ or `delay` | The cron pattern that determines the download frequence |
+| delay | Number | ✓ or `cron` | The delay in minutes that determines the download frequence |
 
 ## File name pattern
 
 The file name needs to be a pattern in order to not overwrite the same file after each download.
+
 Pattern substitutions:
-  - `#` → index of the download iteration
-  - `{date}` → a string representing the current time
+
+| String | Replaced by |
+|:---|:---|
+| # | Index of the download iteration |
+| {date} | A string representing the current time |
 
 ## `delay` vs `cron`
 
@@ -89,7 +61,7 @@ To determine the download frequence of each file, you can use either the `delay`
   {
     "url": "http://www.my-site.com/path/to/file.jpg",
     "name": "file_nb_#({date}).jpg",
-    "path": "relative/path/to",
+    "path": "relative/path/to/file",
     "cron": "0 0/2 7-18 * * *",
     "description": "my file"
   },
