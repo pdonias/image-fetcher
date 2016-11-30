@@ -27,6 +27,10 @@ $ file-fetcher <config file>
 $ file-fetcher [--config|-c] <config file> [--destination|-d <destination folder>] [--log|-l <log file>]
 ```
 
+Default destination folder is [cwd](https://en.wikipedia.org/wiki/Working_directory).
+<br />
+Default log output is [stdout](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29).
+
 ## Config file properties
 
 The config file must contain an array of objects.
