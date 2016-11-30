@@ -15,10 +15,16 @@ $ npm install -g file-fetcher
 ## Usage
 
 - Create a config file with your configuration (See documentation and example below)
-- Run file-fetcher:
+- Quick use:
 
 ```sh
-$ file-fetcher <config file> [<destination folder>]
+$ file-fetcher <config file>
+```
+
+- Pro use:
+
+```sh
+$ file-fetcher [--config|-c] <config file> [--destination|-d <destination folder>] [--log|-l <log file>]
 ```
 
 ## Config file properties

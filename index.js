@@ -5,32 +5,30 @@
 const CronJob = require('cron').CronJob
 const digits = require('digits')
 const dl = require('download')
-const expand = require('expand-tilde')
 const fs = require('fs')
 const mkdirp = require('mkdirp')
-const toAbs = require('to-absolute-glob')
 const {
   forEach
 } = require('lodash')
 
-const ARGS = process.argv
-const FOLDER = process.cwd()
+const {
+  args,
+  log
+} = require('./src/utils')
 
-function toAbsolutePath (relativePath = '') {
-  return toAbs(expand(relativePath), { cwd: FOLDER })
-}
+const { configPath, destinationPath } = args
 
 let config
 try {
-  config = require(toAbsolutePath(ARGS[2]))
+  config = require(configPath)
 } catch (e) {
-  console.log('Usage: file-fetcher <config file> [<destination file>]')
+  console.log('Invalid config file.\nUsage: file-fetcher <config file> [-d <destination folder>] [-l <log file>]')
   process.exit(0)
 }
 
-forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 0, digits: nbDigits }) => {
-  const absolutePath = `${toAbsolutePath(ARGS[3])}/${path}`
-  mkdirp(absolutePath)
+forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 1, digits: nbDigits }) => {
+  const fileFolderPath = `${destinationPath}/${path}`
+  mkdirp(fileFolderPath)
 
   const cb = () => {
     dl(
@@ -40,7 +38,7 @@ forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 0, di
       const date = Date.now()
 
       fs.writeFileSync(
-        `${absolutePath}/` + name.replace(/#|{date}/g, match => {
+        `${fileFolderPath}/` + name.replace(/#|{date}/g, match => {
           switch (match) {
             case '#':
               return index
@@ -51,15 +49,14 @@ forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 0, di
         data
       )
     }).then(
-      () => console.log(`[${(new Date()).toString()}] Saved ${description || name}`),
-      error => console.error(`[${(new Date()).toString()}] ERROR while saving ${description || name}: ${error}`)
+      () => log(`[${(new Date()).toString()}] Saved ${description || name}`),
+      error => log(`[${(new Date()).toString()}] ERROR while saving ${description || name}: ${error}`)
     )
   }
 
   return new CronJob({
     cronTime: cron || `0 0/${delay} * * *`,
     onTick: cb,
-    start: true,
-    timeZone: 'Europe/Paris'
+    start: true
   })
 })
