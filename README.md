@@ -32,16 +32,16 @@ $ file-fetcher [--config|-c] <config file> [--destination|-d <destination folder
 The config file must contain an array of objects.
 Each object corresponds to a file and can/must have the following properties:
 
-| Property | Type | Required? | Description |
-|:---|:---|:---:|:---|
-| url | String | ✓ | The complete URL from which to download the file |
-| path | String | ✓ | The relative local path where to save the file |
-| name | String | ✓ | The name pattern of the destination file (e.g.: my-file-number-#.jpg) |
-| description | String |  | The string used to represent the file in log messages |
-| firstIndex | Number |  | The first number used as index (#) in name pattern |
-| digits | Number |  | The minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left. |
-| cron | String | ✓ or `delay` | The cron pattern that determines the download frequence |
-| delay | Number | ✓ or `cron` | The delay in minutes that determines the download frequence |
+| Property | Type | Required? | Default | Description |
+|:---|:---|:---:|:---|:---|
+| url | String | ✓ |  | The complete URL from which to download the file |
+| path | String | ✓ |  | The relative local path where to save the file |
+| name | String | ✓ |  | The name pattern of the destination file (e.g.: my-file-number-#.jpg) |
+| description | String |  | `name` | The string used to represent the file in log messages |
+| firstIndex | Number |  | 1 | The first number used as index (#) in name pattern |
+| digits | Number |  | 0 | The minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left. |
+| cron | String | ✓ or `delay` |  | The cron pattern that determines the download frequence |
+| delay | Number | ✓ or `cron` |  | The delay in minutes that determines the download frequence |
 
 ## File name pattern
 
