@@ -31,10 +31,7 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>
-<a id="file-fetcher" class="anchor" href="#file-fetcher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>File fetcher</h1>
-
-<p><a href="https://badge.fury.io/js/file-fetcher"><img src="https://badge.fury.io/js/file-fetcher.svg" alt="npm version"></a>
+        <p><a href="https://badge.fury.io/js/file-fetcher"><img src="https://badge.fury.io/js/file-fetcher.svg" alt="npm version"></a>
 <a href="https://badge.fury.io/gh/pdonias%2Ffile-fetcher"><img src="https://badge.fury.io/gh/pdonias%2Ffile-fetcher.svg" alt="GitHub version"></a></p>
 
 <p>file-fetcher is a simple tool that lets you download files recurrently.</p>
@@ -49,10 +46,20 @@
 
 <ul>
 <li>Create a config file with your configuration (See documentation and example below)</li>
-<li>Run file-fetcher:</li>
+<li>Quick use:</li>
 </ul>
 
-<div class="highlight highlight-source-shell"><pre>$ file-fetcher <span class="pl-k">&lt;</span>config file<span class="pl-k">&gt;</span> [<span class="pl-k">&lt;</span>destination folder<span class="pl-k">&gt;</span>]</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ file-fetcher <span class="pl-k">&lt;</span>config file<span class="pl-k">&gt;</span></pre></div>
+
+<ul>
+<li>Pro use:</li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre>$ file-fetcher [--config<span class="pl-k">|</span>-c] <span class="pl-k">&lt;</span>config file<span class="pl-k">&gt;</span> [--destination<span class="pl-k">|</span>-d <span class="pl-k">&lt;</span>destination folder<span class="pl-k">&gt;</span>] [--log<span class="pl-k">|</span>-l <span class="pl-k">&lt;</span>log file<span class="pl-k">&gt;</span>]</pre></div>
+
+<p>Default destination folder is <a href="https://en.wikipedia.org/wiki/Working_directory">cwd</a>.
+<br>
+Default log output is <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">stdout</a>.</p>
 
 <h2>
 <a id="config-file-properties" class="anchor" href="#config-file-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Config file properties</h2>
@@ -66,6 +73,7 @@ Each object corresponds to a file and can/must have the following properties:</p
 <th align="left">Property</th>
 <th align="left">Type</th>
 <th align="center">Required?</th>
+<th align="left">Default</th>
 <th align="left">Description</th>
 </tr>
 </thead>
@@ -74,36 +82,42 @@ Each object corresponds to a file and can/must have the following properties:</p
 <td align="left">url</td>
 <td align="left">String</td>
 <td align="center">✓</td>
+<td align="left"></td>
 <td align="left">The complete URL from which to download the file</td>
 </tr>
 <tr>
 <td align="left">path</td>
 <td align="left">String</td>
 <td align="center">✓</td>
+<td align="left"></td>
 <td align="left">The relative local path where to save the file</td>
 </tr>
 <tr>
 <td align="left">name</td>
 <td align="left">String</td>
 <td align="center">✓</td>
+<td align="left"></td>
 <td align="left">The name pattern of the destination file (e.g.: my-file-number-#.jpg)</td>
 </tr>
 <tr>
 <td align="left">description</td>
 <td align="left">String</td>
 <td align="center"></td>
+<td align="left"><code>name</code></td>
 <td align="left">The string used to represent the file in log messages</td>
 </tr>
 <tr>
 <td align="left">firstIndex</td>
 <td align="left">Number</td>
 <td align="center"></td>
+<td align="left">1</td>
 <td align="left">The first number used as index (#) in name pattern</td>
 </tr>
 <tr>
 <td align="left">digits</td>
 <td align="left">Number</td>
 <td align="center"></td>
+<td align="left">0</td>
 <td align="left">The minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left.</td>
 </tr>
 <tr>
@@ -111,6 +125,7 @@ Each object corresponds to a file and can/must have the following properties:</p
 <td align="left">String</td>
 <td align="center">✓ or <code>delay</code>
 </td>
+<td align="left"></td>
 <td align="left">The cron pattern that determines the download frequence</td>
 </tr>
 <tr>
@@ -118,6 +133,7 @@ Each object corresponds to a file and can/must have the following properties:</p
 <td align="left">Number</td>
 <td align="center">✓ or <code>cron</code>
 </td>
+<td align="left"></td>
 <td align="left">The delay in minutes that determines the download frequence</td>
 </tr>
 </tbody>
