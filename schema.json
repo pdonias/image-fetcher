@@ -1,45 +1,44 @@
 {
   "type": "array",
+  "required": true,
   "items": {
     "type": "object",
     "description": "An object describing how, when and where the file will be downloaded",
     "properties": {
       "url": {
         "type": "string",
+        "required": true,
         "description": "The complete URL from which to download the file"
       },
       "path": {
         "type": "string",
+        "required": true,
         "description": "The relative local path where to save the file"
       },
       "name": {
         "type": "string",
+        "required": true,
         "description": "The name pattern of the destination file (e.g.: my-file-number-#.jpg)"
       },
       "description": {
         "type": "string",
-        "description": "The string used to represent the file in log messages",
-        "optional": "true"
+        "description": "The string used to represent the file in log messages"
       },
       "firstIndex": {
         "type": "number",
-        "description": "The first number used as index (#) in name pattern",
-        "optional": "true"
+        "description": "The first number used as index (#) in name pattern"
       },
       "digits": {
         "type": "number",
-        "description": "The minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left.",
-        "optional": "true"
+        "description": "The minimum number of digits for the index (#) in name pattern. Smaller numbers will be padded with 0s on the left."
       },
       "cron": {
         "type": "string",
-        "description": "The cron pattern that determines the download frequence (delay can be used instead)",
-        "optional": "true"
+        "description": "The cron pattern that determines the download frequence (delay can be used instead)"
       },
       "delay": {
         "type": "number",
-        "description": "The delay in minutes that determines the download frequence (cron can be used instead)",
-        "optional": "true"
+        "description": "The delay in minutes that determines the download frequence (cron can be used instead)"
       }
     }
   }

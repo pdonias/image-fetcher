@@ -13,18 +13,11 @@ const {
 
 const {
   args,
-  log
+  log,
+  config
 } = require('./src/utils')
 
-const { configPath, destinationPath } = args
-
-let config
-try {
-  config = require(configPath)
-} catch (e) {
-  console.log('Invalid config file.\nUsage: file-fetcher <config file> [-d <destination folder>] [-l <log file>]')
-  process.exit(0)
-}
+const { destinationPath } = args
 
 forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 1, digits: nbDigits }) => {
   const fileFolderPath = `${destinationPath}/${path}`
