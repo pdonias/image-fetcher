@@ -22,6 +22,7 @@
     "file-fetcher": "index.js"
   },
   "dependencies": {
+    "chalk": "^1.1.3",
     "cron": "^1.1.1",
     "digits": "^0.2.0",
     "download": "^5.0.2",
