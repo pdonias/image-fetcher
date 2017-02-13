@@ -1,0 +1,9 @@
+[
+  {
+    "url": "https://dummyimage.com/200x100/ddd/777.jpg&text=file-fetcher+test+1",
+    "path": "img/dummy",
+    "name": "dummy_#.jpg",
+    "cron": "*/3 * * * * *",
+    "description": "Dummy image"
+  }
+]
