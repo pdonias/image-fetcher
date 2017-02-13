@@ -24,7 +24,10 @@ $ file-fetcher <config file>
 - Pro use:
 
 ```sh
-$ file-fetcher [--config|-c] <config file> [--destination|-d <destination folder>] [--log|-l <log file>]
+$ file-fetcher
+    [ --config | -c ]      <config file>
+    [ --destination | -d   <destination folder>  ]
+    [ --log | -l           <log file>            ]
 ```
 
 Default destination folder is [cwd](https://en.wikipedia.org/wiki/Working_directory).
@@ -61,7 +64,8 @@ Pattern substitutions:
 ## `delay` vs `cron`
 
 To determine the download frequence of each file, you can use either the `delay` property or the `cron` property.
-- `delay` is simply a number of minutes between each download
+- `delay` is simply a number of minutes between each download<br/>
+__N.B.:__ due to the cron implementation, using a number like **29** will trigger a download at **00:00**, **00:29**, **00:58**, **01:00**, **01:29**, ...
 - `cron` is a [cron expression](https://en.wikipedia.org/wiki/Cron)
 
 ## Config example
@@ -86,3 +90,4 @@ To determine the download frequence of each file, you can use either the `delay`
   }
 ]
 ```
+*A functional `.sample.config.json` file is provided in the sources.*
