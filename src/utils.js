@@ -1,7 +1,9 @@
 const argv = require('yargs').argv
+const chalk = require('chalk')
 const createValidate = require('is-my-json-valid/require')
 const expand = require('expand-tilde')
 const fs = require('fs')
+const pkg = require('../package.json')
 const toAbs = require('to-absolute-glob')
 const {
   forEach
@@ -15,11 +17,17 @@ const isConfigValid = createValidate('../schema.json')
 const configOpt = argv.config || argv.c || argv._[0] // argv._[0]: first unnamed arg
 const destinationOpt = argv.destination || argv.dest || argv.d
 const logOpt = argv.log || argv.l
+const help = argv.help || argv.h
 
 const args = {
   configPath: configOpt && toAbsolutePath(configOpt),
   destinationPath: destinationOpt && toAbsolutePath(destinationOpt) || FOLDER,
   logPath: logOpt && toAbsolutePath(logOpt)
+}
+
+if (help) {
+  showUsage()
+  process.exit(0)
 }
 
 let config
@@ -58,4 +66,12 @@ function log (message) {
   }
 }
 
-module.exports = { toAbsolutePath, log, args, config }
+function showUsage () {
+  console.log(
+    chalk.yellow.underline('Usage:') +
+    chalk.yellow('\n\n$ file-fetcher <config file> [-d <destination folder>] [-l <log file>]') +
+    chalk.yellow(`\n\n${pkg.name} ${pkg.version}`)
+  )
+}
+
+module.exports = { toAbsolutePath, log, args, config, showUsage }

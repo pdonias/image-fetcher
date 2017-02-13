@@ -13,8 +13,8 @@ const {
 
 const {
   args,
-  log,
-  config
+  config,
+  log
 } = require('./src/utils')
 
 const { destinationPath } = args
