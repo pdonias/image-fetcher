@@ -3,6 +3,7 @@ const chalk = require('chalk')
 const createValidate = require('is-my-json-valid/require')
 const expand = require('expand-tilde')
 const fs = require('fs')
+const pkg = require('../package.json')
 const toAbs = require('to-absolute-glob')
 const {
   forEach
@@ -68,7 +69,8 @@ function log (message) {
 function showUsage () {
   console.log(
     chalk.yellow.underline('Usage:') +
-    chalk.yellow('\n\n$ file-fetcher <config file> [-d <destination folder>] [-l <log file>]')
+    chalk.yellow('\n\n$ file-fetcher <config file> [-d <destination folder>] [-l <log file>]') +
+    chalk.yellow(`\n\n${pkg.name} ${pkg.version}`)
   )
 }
 
