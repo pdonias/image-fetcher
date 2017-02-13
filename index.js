@@ -19,7 +19,7 @@ const {
 
 const { destinationPath } = args
 
-forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 1, digits: nbDigits }) => {
+forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 1, digits: nbDigits = 3 }) => {
   const fileFolderPath = `${destinationPath}/${path}`
   mkdirp(fileFolderPath)
 
