@@ -82,10 +82,10 @@ __N.B.:__ due to the cron implementation, using a number like **29** will trigge
   {
     "url": "http://www.my-site.com/path/to/other/file.jpg",
     "name": "file_nb_#.jpg",
-    "firstIndex": "42",
-    "digits": "4",
+    "firstIndex": 42,
+    "digits": 4,
     "path": "relative/path/to/other/file",
-    "delay": "3",
+    "delay": 3,
     "description": "my other file"
   }
 ]
