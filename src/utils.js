@@ -1,13 +1,14 @@
-const argv = require('yargs').argv
-const chalk = require('chalk')
-const createValidate = require('is-my-json-valid/require')
-const expand = require('expand-tilde')
-const fs = require('fs')
-const pkg = require('../package.json')
-const toAbs = require('to-absolute-glob')
-const {
+import chalk from 'chalk'
+import createValidate from 'is-my-json-valid/require'
+import expand from 'expand-tilde'
+import fs from 'fs'
+import toAbs from 'to-absolute-glob'
+import { argv } from 'yargs'
+import {
   forEach
-} = require('lodash')
+} from 'lodash'
+
+import pkg from '../package.json'
 
 // -----------------------------------------------------------------------------
 
@@ -19,9 +20,9 @@ const destinationOpt = argv.destination || argv.dest || argv.d
 const logOpt = argv.log || argv.l
 const help = argv.help || argv.h
 
-const args = {
+export const args = {
   configPath: configOpt && toAbsolutePath(configOpt),
-  destinationPath: destinationOpt && toAbsolutePath(destinationOpt) || FOLDER,
+  destinationPath: (destinationOpt && toAbsolutePath(destinationOpt)) || FOLDER,
   logPath: logOpt && toAbsolutePath(logOpt)
 }
 
@@ -37,6 +38,7 @@ try {
   console.log('Config file not found')
   process.exit(1)
 }
+module.exports.config = config // TODO: ES6
 
 if (!isConfigValid(config)) {
   console.log('Invalid config:')
@@ -48,11 +50,11 @@ if (!isConfigValid(config)) {
 
 // -----------------------------------------------------------------------------
 
-function toAbsolutePath (relativePath = '') {
+export function toAbsolutePath (relativePath = '') {
   return toAbs(expand(relativePath), { cwd: FOLDER })
 }
 
-function log (message) {
+export function log (message) {
   const { logPath } = args
 
   if (logPath) {
@@ -66,12 +68,10 @@ function log (message) {
   }
 }
 
-function showUsage () {
+export function showUsage () {
   console.log(
     chalk.yellow.underline('Usage:') +
     chalk.yellow('\n\n$ file-fetcher <config file> [-d <destination folder>] [-l <log file>]') +
     chalk.yellow(`\n\n${pkg.name} ${pkg.version}`)
   )
 }
-
-module.exports = { toAbsolutePath, log, args, config, showUsage }
