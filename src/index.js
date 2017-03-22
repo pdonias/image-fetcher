@@ -1,21 +1,17 @@
-#!/usr/bin/env node
-
-'use strict'
-
-const CronJob = require('cron').CronJob
-const digits = require('digits')
-const dl = require('download')
-const fs = require('fs')
-const mkdirp = require('mkdirp')
-const {
+import { CronJob } from 'cron'
+import digits from 'digits'
+import dl from 'download'
+import fs from 'fs'
+import mkdirp from 'mkdirp'
+import {
   forEach
-} = require('lodash')
+} from 'lodash'
 
-const {
+import {
   args,
   config,
   log
-} = require('./src/utils')
+} from './utils'
 
 const { destinationPath } = args
 
