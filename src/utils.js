@@ -2,6 +2,7 @@ import chalk from 'chalk'
 import createValidate from 'is-my-json-valid/require'
 import expand from 'expand-tilde'
 import fs from 'fs'
+import moment from 'moment'
 import toAbs from 'to-absolute-glob'
 import { argv } from 'yargs'
 import {
@@ -54,8 +55,12 @@ export function toAbsolutePath (relativePath = '') {
   return toAbs(expand(relativePath), { cwd: FOLDER })
 }
 
-export function log (message) {
+export function log (message, time = true) {
   const { logPath } = args
+
+  if (time) {
+    message = `[${getDate()}] ${message}`
+  }
 
   if (logPath) {
     fs.appendFile(logPath, `${message}\n`, e => {
@@ -74,4 +79,8 @@ export function showUsage () {
     chalk.yellow('\n\n$ file-fetcher <config file> [-d <destination folder>] [-l <log file>]') +
     chalk.yellow(`\n\n${pkg.name} ${pkg.version}`)
   )
+}
+
+export function getDate () {
+  return moment().format('YYYY-MM-DD ss:mm:hh')
 }
