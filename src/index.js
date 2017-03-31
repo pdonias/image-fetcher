@@ -15,11 +15,24 @@ import {
 
 const { destinationPath } = args
 
-forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 1, digits: nbDigits = 3 }) => {
+forEach(config, ({
+  cron,
+  delay,
+  description,
+  digits: nbDigits = 3,
+  firstIndex = 1,
+  name,
+  path,
+  url
+}) => {
   const fileFolderPath = `${destinationPath}/${path}`
-  mkdirp(fileFolderPath)
+  mkdirp(fileFolderPath, error => {
+    if (error) {
+      log(`ERROR while creating folder ${fileFolderPath}: ${error}`)
+    }
+  })
 
-  const cb = () => {
+  const onTick = () => {
     dl(
       url
     ).then(data => {
@@ -38,14 +51,14 @@ forEach(config, ({ name, description, url, path, delay, cron, firstIndex = 1, di
         data
       )
     }).then(
-      () => log(`[${(new Date()).toString()}] Saved ${description || name}`),
-      error => log(`[${(new Date()).toString()}] ERROR while saving ${description || name}: ${error}`)
+      () => log(`Saved ${description || name}`),
+      error => log(`ERROR while saving ${description || name}: ${error}`)
     )
   }
 
   return new CronJob({
     cronTime: cron || `0 0/${delay} * * *`,
-    onTick: cb,
+    onTick,
     start: true
   })
 })

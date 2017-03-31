@@ -32,9 +32,9 @@
     "download": "^5.0.2",
     "expand-tilde": "^2.0.2",
     "is-my-json-valid": "^2.15.0",
-    "lodash": "^4.16.6",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
+    "moment": "^2.18.1",
     "to-absolute-glob": "^2.0.1",
     "yargs": "^6.4.0"
   },
