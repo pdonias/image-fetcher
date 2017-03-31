@@ -21,7 +21,8 @@
   "main": "bin/",
   "files": [
     "bin",
-    "dist/"
+    "dist/",
+    "schema.json"
   ],
   "bin": {
     "file-fetcher": "bin/index.js"
