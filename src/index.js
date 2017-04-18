@@ -10,7 +10,8 @@ import {
 import {
   args,
   config,
-  log
+  log,
+  logError
 } from './utils'
 
 const { destinationPath } = args
@@ -29,7 +30,7 @@ export default function () {
     const fileFolderPath = `${destinationPath}/${path}`
     mkdirp(fileFolderPath, error => {
       if (error) {
-        log(`ERROR while creating folder ${fileFolderPath}: ${error}`)
+        logError(`ERROR while creating folder ${fileFolderPath}: ${error}`)
       }
     })
 
@@ -53,7 +54,7 @@ export default function () {
         )
       }).then(
         () => log(`Saved ${description || name}`),
-        error => log(`ERROR while saving ${description || name}: ${error}`)
+        error => logError(`ERROR while saving ${description || name}: ${error}`)
       )
     }
 
