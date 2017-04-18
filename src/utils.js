@@ -1,7 +1,6 @@
 import chalk from 'chalk'
 import createValidate from 'is-my-json-valid/require'
 import expand from 'expand-tilde'
-import fs from 'fs'
 import moment from 'moment'
 import toAbs from 'to-absolute-glob'
 import { argv } from 'yargs'
@@ -18,13 +17,11 @@ const isConfigValid = createValidate('../schema.json')
 
 const configOpt = argv.config || argv.c || argv._[0] // argv._[0]: first unnamed arg
 const destinationOpt = argv.destination || argv.dest || argv.d
-const logOpt = argv.log || argv.l
 const help = argv.help || argv.h
 
 export const args = {
   configPath: configOpt && toAbsolutePath(configOpt),
-  destinationPath: (destinationOpt && toAbsolutePath(destinationOpt)) || FOLDER,
-  logPath: logOpt && toAbsolutePath(logOpt)
+  destinationPath: (destinationOpt && toAbsolutePath(destinationOpt)) || FOLDER
 }
 
 if (help) {
@@ -55,28 +52,22 @@ export function toAbsolutePath (relativePath = '') {
   return toAbs(expand(relativePath), { cwd: FOLDER })
 }
 
-export function log (message, time = true) {
-  const { logPath } = args
-
+export function log (message, time = true, error = false) {
   if (time) {
     message = `[${getDate()}] ${message}`
   }
 
-  if (logPath) {
-    fs.appendFile(logPath, `${message}\n`, e => {
-      if (e) {
-        console.error(e)
-      }
-    })
-  } else {
-    console.log(message)
-  }
+  (error ? console.error : console.log)(message)
+}
+
+export function logError (message, time) {
+  log(message, time, true)
 }
 
 export function showUsage () {
   console.log(
     chalk.yellow.underline('Usage:') +
-    chalk.yellow('\n\n$ file-fetcher <config file> [-d <destination folder>] [-l <log file>]') +
+    chalk.yellow('\n\n$ file-fetcher <config file> [-d <destination folder>]') +
     chalk.yellow(`\n\n${pkg.name} ${pkg.version}`)
   )
 }
