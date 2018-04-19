@@ -1,3 +1,22 @@
+I don't want to read the README
+===============================
+*Just show me how it works as fast as possible!*
+```sh
+npm i -g file-fetcher
+mkdir /tmp/file-fetcher-test
+cd !$
+echo '[
+  {
+    "url": "https://dummyimage.com/200x100/ddd/777.jpg&text=file-fetcher+test",
+    "path": "img",
+    "name": "#.jpg",
+    "delay": 1
+  }
+]' > config.json
+file-fetcher config.json
+```
+The images are being downloaded to `/tmp/file-fetcher-test/img` every minute.
+
 File fetcher
 ============
 
