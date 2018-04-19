@@ -59,7 +59,7 @@ export default function () {
     }
 
     return new CronJob({
-      cronTime: cron || `0 0/${delay} * * *`,
+      cronTime: cron || `0 */${delay} * * * *`,
       onTick,
       start: true
     })
